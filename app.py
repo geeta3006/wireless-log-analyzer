@@ -503,7 +503,7 @@ def clr(v):
     return {"ERROR": "color:#f87171", "WARN": "color:#fbbf24", "INFO": "color:#34d399"}.get(v, "")
 
 st.dataframe(
-    dt[cols].sort_values("timestamp", ascending=False).head(200).style.applymap(clr, subset=["level"]),
+   dt[cols].sort_values("timestamp", ascending=False).head(200).style.map(clr, subset=["level"]),
     use_container_width=True, height=380,
 )
 st.markdown(
