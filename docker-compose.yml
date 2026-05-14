@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  wireless-log-analyzer:
+    build: .
+    image: wireless-log-analyzer:latest
+    container_name: wireless-log-analyzer
+    ports:
+      - "8501:8501"
+    volumes:
+      # Mount a local folder so users can drop in real log files
+      - ./data:/app/data
+    environment:
+      - STREAMLIT_THEME_BASE=dark
+      - STREAMLIT_SERVER_MAX_UPLOAD_SIZE=200
+    restart: unless-stopped
